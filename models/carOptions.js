@@ -8,6 +8,6 @@ const CarOptionSchema = new Schema({
     weight: Number
 });
 
-const CarOption = mongoose.model('caroption'.CarOptionSchema); //whenever a new car option is added the 'model' will be created in the caroption collection using the CarOptionSchema
+const CarOption = mongoose.model('caroption', CarOptionSchema); //whenever a new car option is added the 'model' will be created in the caroption collection using the CarOptionSchema
 
 module.exports = CarOption; //will allow me to use this in other files
