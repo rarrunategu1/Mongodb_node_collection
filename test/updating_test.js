@@ -8,7 +8,8 @@ describe('Updating records', function(){
     
     beforeEach(function(done){
        car = new CarOption({
-            model: 'Lambo'
+            model: 'Lambo',
+            weight: 230
         });
         
         car.save().then(function(){
@@ -28,9 +29,19 @@ describe('Updating records', function(){
             done();
         });
      });
+  
+    });
+     
+    it('Increments weight by 1', function(done){
+     
+     CarOption.updateMany({},{$inc: {weight: 1}}).then(function(){ //updates all the records by one
+         CarOption.findOne({model: 'Lambo'}).then(function(record){
+             assert(record.weight === 231);
+             done();
+        });
+     });
              
-        
-    
 });
 
 });
+
