@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 //Connect to the db before tests run
 before(function(done){
+
   //connect to mongodb
 mongoose.connect('mongodb://titamandarica34:Freedom1!@ds117719.mlab.com:17719/testaroo', { useNewUrlParser: true });
 
@@ -11,7 +12,8 @@ mongoose.connection.once('open', function(){
 }).on('error', function(error){
     console.log('Connection error:', error);
 });  
-});
+mongoose.set('useFindAndModify', false); //inserted to remove deprecation warning for findOneAndUpdate method in updating file
+}); //to have mongooose call the appropriate findOne* method on the mongodb native driver.
 
 //empty database before every test so that each one can run alone
 beforeEach(function(done){
