@@ -4,8 +4,10 @@ const CarOption = require('../models/carOptions');
 //Describe tests
 describe('Finding records', function(){
     
+    var car;
+    
     beforeEach(function(done){
-       var car = new CarOption({
+       car = new CarOption({
             model: 'Lambo'
         });
         
@@ -26,4 +28,13 @@ describe('Finding records', function(){
         done();
      });  
 });
+
+it('Finds one record by ID from the database', function(done){
+     
+     CarOption.findOne({_id: car._id}).then(function(result){
+        assert(result._id.toString === car._id.toString); //using toString converts the objects to something that can be asserted
+        done();
+     }); 
+});
+
 });
