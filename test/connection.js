@@ -12,3 +12,11 @@ mongoose.connection.once('open', function(){
     console.log('Connection error:', error);
 });  
 });
+
+//empty database before every test so that each one can run alone
+beforeEach(function(done){
+   //Drop collection
+   mongoose.connection.collections.caroptions.drop(function(){
+       done();
+});
+});
