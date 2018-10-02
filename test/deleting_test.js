@@ -12,7 +12,6 @@ describe('Deleting records', function(){
         });
         
         car.save().then(function(){
-            assert(car.isNew === false);//will return either true or false.  Depends on if it was saved to the database
             done();
         });//mongoose gives us the method to save the new car to the database 
         
